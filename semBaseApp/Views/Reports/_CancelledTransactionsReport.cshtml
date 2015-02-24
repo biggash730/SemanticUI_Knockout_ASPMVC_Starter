@@ -1,0 +1,119 @@
+﻿<template id='cancelledTransactions-template'>
+    <div class="ui raised blue segment">
+        <div class="ui blue ribbon huge label">Cancelled Transactions Report</div>
+        <div class="ui right floated animated fade pink button" data-bind="click: print">
+            <div class="visible content">Print</div>
+            <div class="hidden content">
+                <i class="print icon"></i>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui styled fluid accordion" id="cancelledTransactionsFilterAccordion">
+            <div class="title">
+                <i class="dropdown icon"></i>
+                Filter Records
+            </div>
+            <div class="content">
+                <div class="ui form">
+                    <div class="five fields">
+                        <div class=" field">
+                            <label>Unique Code</label>
+                            <div class="ui left icon input">
+                                <i class="tags icon"></i>
+                                <input type="text" placeholder="Unique Code ..." data-bind="value: UniqueCode">
+                            </div>
+                        </div>
+                        <div class=" field">
+                            <label>Name</label>
+                            <div class="ui left icon input">
+                                <i class="tags icon"></i>
+                                <input type="text" placeholder="Sender/Recipient Name ..." data-bind="value: Name">
+                            </div>
+                        </div>
+                        <div class=" field">
+                            <label>Sender's Country</label>
+                            <select class="ui fluid selection input" data-bind="options: Countries, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Senders Country...', value: SenderCountryId"></select>
+                        </div>
+                        <div class=" field">
+                            <label>Recipient's Country</label>
+                            <select class="ui fluid selection input" data-bind="options: Countries, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Recipients Country...', value: RecipientCountryId"></select>
+                        </div>
+                        <div class=" field">
+                            <label>Currency</label>
+                            <select class="ui fluid selection input" data-bind="options: Currencies, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Currency...', value: CurrencyId"></select>
+                        </div>
+                    </div>
+                    <div class="four fields">
+                        <div class=" field">
+                            <label>Amount From</label>
+                            <div class="ui left icon input">
+                                <input type="number" name="date" placeholder="Amount" data-bind="value: AmountFrom">
+                                <i class="money icon"></i>
+                            </div>
+                        </div>
+                        <div class=" field">
+                            <label>Amount To</label>
+                            <div class="ui left icon input">
+                                <input type="number" name="date" placeholder="Amount" data-bind="value: AmountTo">
+                                <i class="money icon"></i>
+                            </div>
+                        </div>
+                        <div class=" field">
+                            <label>Date From</label>
+                            <div class="ui left icon input">
+                                <input type="date" name="date" placeholder="Date" data-bind="value: DateFrom">
+                                <i class="calendar icon"></i>
+                            </div>
+                        </div>
+                        <div class=" field">
+                            <label>Date To</label>
+                            <div class="ui left icon input">
+                                <input type="date" name="date" placeholder="Date" data-bind="value: DateTo">
+                                <i class="calendar icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui labeled icon purple button" data-bind="click: FilterRecords">
+                        <i class="filter icon"></i>
+                        Filter
+                    </div>
+                    <div class="ui right labeled icon red button" data-bind="click: ClearFields">
+                        <i class="refresh icon"></i>
+                        Clear
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div id="CancelledTransactionsReportTable">
+            <h2 class="ui center aligned header">Cancelled Transactions Report</h2>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Transaction Date</th>
+                        <th>Amount</th>
+                        <th>Fee</th>
+                        <th>Unique</th>
+                        <th>Sender's Name</th>
+                        <th>Recipient's Name</th>
+                        <th>Date Cancelled</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: data">
+                    <tr>
+                        <td data-bind="text: $index() + 1" class="left floated"></td>
+                        <td data-bind="text: moment($data.Date).format('Do MMMM, YYYY')"></td>
+                        <td data-bind="text: accounting.formatMoney($data.Amount,$data.Currency.Symbol)"></td>
+                        <td data-bind="text: accounting.formatMoney($data.Fee,$data.Currency.Symbol)"></td>
+                        <td data-bind="text: $data.UniqueCode"></td>
+                        <td data-bind="text: $data.SenderName"></td>
+                        <td data-bind="text: $data.RecipientName"></td>
+                        <td data-bind="text: moment($data.Updated).format('Do MMMM, YYYY')"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

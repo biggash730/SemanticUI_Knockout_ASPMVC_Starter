@@ -1,0 +1,180 @@
+﻿@using Microsoft.AspNet.Identity
+@using vls.Classes.Helpers
+@using vls.Classes.Repositories
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.AntiForgeryToken()
+    var user = new UserRepo().GetUser(User.Identity.GetUserId());
+
+    <div class="ui inverted large menu" id="MainMenu" >
+        <a class="item" href="@Url.Action("Index", "Home")">
+            <img class="circular ui image" src="/Content/images/logo.jpg" alt="logo" style="width: 40px; height: 40px;">
+        </a>
+        <a class="item" href="@Url.Action("Index", "Home")">
+            <i class="icon dashboard" title="Dashboard"></i>
+            Dashboard
+        </a>
+        @if (User.IsInRole("Agent"))
+        {
+            <a class="item" href="@Url.Action("Send", "Home")">
+                <i class="icon mail" title="Send Money"></i>
+                Send Money
+            </a>
+        }
+        @if (User.IsInRole("Agent"))
+        {
+            <a class="item" href="@Url.Action("Recieve", "Home")">
+                <i class="icon book" title="Pay Money"></i>
+                Pay Money
+            </a>
+        }
+        @if (User.IsInRole("Agent"))
+        {
+            <a class="item" href="@Url.Action("Cancel", "Home")">
+                <i class="icon remove circle" title="Cancel Transfer"></i>
+                Cancel Transfer
+            </a>
+        }
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="item" href="@Url.Action("Reverse", "Home")">
+                <i class="icon recycle" title="Reverse Transaction"></i>
+                Reverse Transaction
+            </a>
+        }
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="item" href="@Url.Action("Index", "Branches")">
+                <i class="icon building" title="Branches"></i>
+                Branches
+            </a>
+        }
+        @if (User.IsInRole("Administrator") || User.IsInRole("Audit"))
+        {
+            <a class="item" href="@Url.Action("Index", "Reports")">
+                <i class="icon ticket" title="Reports"></i>
+                Reports
+            </a>
+        }
+        
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="item" href="@Url.Action("Index", "Users")" title="Users">
+                <i class="icon users" title="Users"></i>
+                Users
+            </a>
+        }
+
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="item" href="@Url.Action("Index", "Settings")" title="Settings">
+                <i class="icon settings"></i>
+                Settings
+            </a>
+        }
+        <div class="right menu">
+            <div class="ui dropdown item" id="userDropdown">
+                @user.FullName <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="@Url.Action("ChangePassword", "Users")" title="Manage Profile">
+                        <i class="icon write square"></i>
+                        Change Password
+                    </a>
+                    <a class="item" href="@Url.Action("Logout", "Users")" title="Logout">
+                        <i class="icon sign out"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ui inverted large menu" id="ResponsiveMenu" >
+        <a class="item" href="@Url.Action("Index", "Home")">
+            InstaCash
+        </a>
+        <div class="ui dropdown item" id="menuDropdown">
+            <i class="icon list layout" title="Menu"></i>
+            Menu <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item" href="@Url.Action("Index", "Home")">
+                    <i class="icon dashboard" title="Dashboard"></i>
+                    Dashboard
+                </a>
+                @if (User.IsInRole("Agent"))
+                {
+                    <a class="item" href="@Url.Action("Send", "Home")">
+                        <i class="icon mail" title="Send Money"></i>
+                        Send Money
+                    </a>
+                }
+                @if (User.IsInRole("Agent"))
+                {
+                    <a class="item" href="@Url.Action("Recieve", "Home")">
+                        <i class="icon book" title="Pay Money"></i>
+                        Pay Money
+                    </a>
+                }
+                @if (User.IsInRole("Agent"))
+                {
+                    <a class="item" href="@Url.Action("Cancel", "Home")">
+                        <i class="icon remove circle" title="Cancel Transfer"></i>
+                        Cancel Transfer
+                    </a>
+                }
+                @if (User.IsInRole("Administrator"))
+                {
+                    <a class="item" href="@Url.Action("Reverse", "Home")">
+                        <i class="icon recycle" title="Reverse Transaction"></i>
+                        Reverse Transaction
+                    </a>
+                }
+                @if (User.IsInRole("Administrator"))
+                {
+                    <a class="item" href="@Url.Action("Index", "Branches")">
+                        <i class="icon building" title="Branches"></i>
+                        Branches
+                    </a>
+                }
+                @if (User.IsInRole("Administrator") || User.IsInRole("Audit"))
+                {
+                    <a class="item" href="@Url.Action("Index", "Reports")">
+                        <i class="icon ticket" title="Reports"></i>
+                        Reports
+                    </a>
+                }
+                @if (User.IsInRole("Administrator"))
+                {
+                    <a class="item" href="@Url.Action("Index", "Users")" title="Users">
+                        <i class="icon users" title="Users"></i>
+                        Users
+                    </a>
+                }
+
+                @if (User.IsInRole("Administrator"))
+                {
+                    <a class="item" href="@Url.Action("Index", "Settings")" title="Settings">
+                        <i class="icon settings"></i>
+                        Settings
+                    </a>
+                }
+                <div class="ui dropdown item" id="userDropdown">
+                    @user.FullName <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="@Url.Action("ChangePassword", "Users")" title="Manage Profile">
+                            <i class="icon write square"></i>
+                            Change Password
+                        </a>
+                        <a class="item" href="@Url.Action("Logout", "Users")" title="Logout">
+                            <i class="icon sign out"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui divider"></div>
+
+}
+<script src="~/Content/js/app/menu.js"></script>

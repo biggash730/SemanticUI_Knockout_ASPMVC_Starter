@@ -1,0 +1,23 @@
+2014-11-18 13:23:08.2809 ERROR Country => CreatedById:The CreatedById field is required.,UpdatedById:The UpdatedById field is required.
+2014-11-18 13:34:05.9941 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:36:15.6251 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:37:36.1091 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:38:05.5370 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:38:14.2373 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:38:28.8954 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:39:08.9340 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:40:25.9149 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:40:58.3699 ERROR Object reference not set to an instance of an object.
+2014-11-18 13:42:41.7732 ERROR Object reference not set to an instance of an object.
+2014-11-18 16:07:02.9325 ERROR Country => Name:The Name field is required.
+2014-11-18 16:07:15.2472 ERROR Country => Name:The Name field is required.
+2014-11-18 16:47:55.1231 ERROR Country => Name:The Name field is required.
+2014-11-18 16:50:00.6024 ERROR Country => UpdatedById:The UpdatedById field is required.
+2014-11-18 19:33:07.2263 ERROR The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Regions_dbo.Countries_CountryId". The conflict occurred in database "vls", table "dbo.Countries", column 'Id'.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.
+2014-11-18 19:36:00.7215 ERROR The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Regions_dbo.Countries_CountryId". The conflict occurred in database "vls", table "dbo.Countries", column 'Id'.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.

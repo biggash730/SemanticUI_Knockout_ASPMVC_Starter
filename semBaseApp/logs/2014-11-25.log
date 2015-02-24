@@ -1,0 +1,6 @@
+2014-11-25 13:10:11.9624 ERROR The specified type member 'Date' is not supported in LINQ to Entities. Only initializers, entity members, and entity navigation properties are supported.
+2014-11-25 13:11:55.1123 ERROR The specified type member 'Date' is not supported in LINQ to Entities. Only initializers, entity members, and entity navigation properties are supported.
+2014-11-25 13:12:34.3869 ERROR LINQ to Entities does not recognize the method 'System.DateTime AddDays(Double)' method, and this method cannot be translated into a store expression.
+2014-11-25 13:13:58.8962 ERROR Collection was modified; enumeration operation may not execute.
+2014-11-25 15:33:39.7178 ERROR An item with the same key has already been added.
+2014-11-25 15:33:57.6875 ERROR An item with the same key has already been added.

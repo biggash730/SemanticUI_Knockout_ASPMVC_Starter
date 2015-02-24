@@ -1,0 +1,16 @@
+2014-11-23 11:55:52.2901 ERROR Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.
+Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.
+2014-11-23 11:55:52.2744 ERROR Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.
+Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. Refresh ObjectStateManager entries.
+2014-11-23 18:16:00.6266 ERROR The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.PayIns_dbo.SalesExecutives_SalesExecutiveId". The conflict occurred in database "issuetracker", table "dbo.SalesExecutives", column 'Id'.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.
+2014-11-23 18:34:40.5799 ERROR The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Clients_dbo.SalesExecutives_SalesExecutiveId". The conflict occurred in database "issuetracker", table "dbo.SalesExecutives", column 'Id'.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.
+2014-11-23 18:34:43.8776 ERROR The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Clients_dbo.SalesExecutives_SalesExecutiveId". The conflict occurred in database "issuetracker", table "dbo.SalesExecutives", column 'Id'.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.

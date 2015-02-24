@@ -1,0 +1,374 @@
+﻿
+@{
+    ViewBag.Title = "Send";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="ui raised purple segment" id="SendPage">
+    <div class="ui ribbon purple huge label">
+        Send Money
+    </div>
+    <div class="ui horizontal icon divider">
+        <i class="circular puzzle piece icon"></i>
+    </div>
+    
+    <div class="ui grid"  id="AddTransactionForm" data-bind="visible: showAddView">
+        <div class="left floated two wide column"></div>
+        <div class="left floated twelve wide column">
+            <div class="ui form segment">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Sender's Name</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="text" name="name" data-bind="value: SenderName">
+                            <i class="pointing left icon"></i>
+                            <div class="ui corner label">
+                                <i class="icon asterisk"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Sender's Mobile Number</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="text" name="phonenumber" data-bind="value: SenderPhoneNumber">
+                            <i class="call icon"></i>
+                            <div class="ui corner label">
+                                <i class="icon asterisk"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="three fields">
+                    <div class="field">
+                        <label>Date</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="date" placeholder="Date" data-bind="value: Date">
+                            <i class="calendar icon"></i>
+                            <div class="ui corner label">
+                                <i class="icon asterisk"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Amount</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="number" name="amount" data-bind="value: Amount">
+                            <i class="money icon"></i>
+                            <div class="ui corner label">
+                                <i class="icon asterisk"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Currency</label>
+                        <select class="ui fluid selection input" data-bind="options: Currencies, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Currency...', value: CurrencyId, event:{change: currencyChanged}"></select>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Fee</label>
+                        <input type="text" placeholder="Fee" data-bind="value: Fee" readonly="readonly">
+                    </div>
+                    <div class="field">
+                        <label>Total Amount</label>
+                        <input type="text" data-bind="value: TotalAmount" readonly="readonly">
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Exchange Rate</label>
+                        <input type="text" data-bind="value: ExchangeRate" readonly="readonly">
+                    </div>
+                    <div class="field">
+                        <label>Sent Amount in Cedis</label>
+                        <input type="text" data-bind="value: AmountInCedis" readonly="readonly">
+                    </div>
+                </div>
+                <div class="three fields">
+                    <div class="field">
+                        <label>Recipient's Name</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="text" name="fullname" data-bind="value: RecipientName">
+                            <i class="pointing right icon"></i>
+                            <div class="ui corner label">
+                                <i class="icon asterisk"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Recipient's Mobile Number</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="text" name="phonenumber" data-bind="value: RecipientPhoneNumber">
+                            <i class="call icon"></i>
+                            <div class="ui corner label">
+                                <i class="icon asterisk"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Recipient's Country</label>
+                        <select class="ui fluid selection input" data-bind="options: Countries, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Country...', value: RecipientCountryId"></select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Security Question</label>
+                    <select class="ui fluid selection input" data-bind="options: Questions, optionsText: 'Description', optionsValue: 'Id',  optionsCaption: 'Choose Question...', value: QuestionId"></select>
+                </div>
+                <div class="field">
+                    <label>Answer</label>
+                    <div class="ui left icon corner labeled input">
+                        <input type="text" placeholder="answer" data-bind="value: Answer">
+                        <i class="question icon"></i>
+                        <div class="ui corner label">
+                            <i class="icon asterisk"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Notes</label>
+                    <div class="ui left icon corner labeled icon input">
+                        <input type="text" name="notes" placeholder="Info" data-bind="value: Notes">
+                        <i class="text file icon"></i>
+                    </div>
+                </div>
+                <div class="ui buttons right floated">
+                    <div class="ui animated fade red reset button" data-bind="click: clearValues">
+                        <div class="visible content">Reset</div>
+                        <div class="hidden content">
+                            <i class="remove icon"></i>
+                        </div>
+                    </div>
+                    <div class="or"></div>
+                    <div class="ui animated fade teal submit button" data-bind="click: InfoView">
+                        <div class="visible content">Save</div>
+                        <div class="hidden content">
+                            <i class="save icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right floated two wide column"></div>
+    </div>
+    
+    <div class="ui grid" data-bind="visible: showInfoView" style="display: none;">
+        
+        <div class="left floated three wide column"></div>
+        <div class="left floated ten wide column">
+            <h4 class="ui huge header center aligned">Confirm Details</h4>
+            <div class="ui small form raised segment">
+                <div class="two fields">
+                    <div class=" field">
+                        <label>Sender's Name</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="text" name="fullname" data-bind="value: SenderName" readonly="readonly">
+                            <i class="pointing left icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Sender's Mobile Number</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="text" name="phonenumber" data-bind="value: SenderPhoneNumber" readonly="readonly">
+                            <i class="call icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="three fields">
+                    <div class="field">
+                        <label>Date</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="date" placeholder="Date" data-bind="value: Date" readonly="readonly">
+                            <i class="calendar icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Amount</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="number" name="amount" data-bind="value: Amount" readonly="readonly">
+                            <i class="money icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Currency</label>
+                        <select class="ui fluid selection input" data-bind="options: Currencies, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Currency...', value: CurrencyId" disabled="disabled"></select>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Fee</label>
+                        <input type="text" placeholder="Fee" data-bind="value: Fee" readonly="readonly">
+                    </div>
+                    <div class="field">
+                        <label>Total Amount</label>
+                        <input type="text" data-bind="value: TotalAmount" readonly="readonly">
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Exchange Rate</label>
+                        <input type="text" data-bind="value: ExchangeRate" readonly="readonly">
+                    </div>
+                    <div class="field">
+                        <label>Sent Amount in Cedis</label>
+                        <input type="text" data-bind="value: AmountInCedis" readonly="readonly">
+                    </div>
+                </div>
+                <div class="three fields">
+                    <div class="field">
+                        <label>Recipient's Name</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="text" name="fullname" data-bind="value: RecipientName" readonly="readonly">
+                            <i class="pointing right icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Recipient's Mobile Number</label>
+                        <div class="ui left icon corner labeled input">
+                            <input type="text" name="phonenumber" data-bind="value: RecipientPhoneNumber" readonly="readonly">
+                            <i class="call icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Recipient's Country</label>
+                        <select class="ui fluid selection input" data-bind="options: Countries, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Country...', value: RecipientCountryId" disabled="disabled"></select>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <label>Security Question</label>
+                    <select class="ui fluid selection input" data-bind="options: Questions, optionsText: 'Description', optionsValue: 'Id',  optionsCaption: 'Choose Question...', value: QuestionId" disabled="disabled"></select>
+                </div>
+                <div class="field">
+                    <label>Answer</label>
+                    <div class="ui left icon corner labeled input">
+                        <input type="text" placeholder="Answer" data-bind="value: Answer" readonly="readonly">
+                        <i class="question icon"></i>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Notes</label>
+                    <div class="ui left icon corner labeled icon input">
+                        <input type="text" name="notes" placeholder="Info" data-bind="value: Notes" readonly="readonly">
+                        <i class="text file icon"></i>
+                    </div>
+                </div>
+                <div class="ui buttons right floated">
+                    <div class="ui animated fade red button" data-bind="click: closeInfoView">
+                        <div class="visible content">Back</div>
+                        <div class="hidden content">
+                            <i class="remove icon"></i>
+                        </div>
+                    </div>
+                    <div class="or"></div>
+                    <div class="ui animated fade teal button" data-bind="click: save">
+                        <div class="visible content">Confirm</div>
+                        <div class="hidden content">
+                            <i class="save icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right floated three wide column"></div>
+
+    </div>
+    
+    <div class="ui grid" style="display: none;" data-bind="visible: showPrintView">
+        <div class="left floated two wide column"></div>
+        <div class="left floated twelve wide column">
+            <div class="ui right floated animated fade red button" data-bind="click: closePrintView">
+                <div class="visible content">Close</div>
+                <div class="hidden content">
+                    <i class="refresh icon"></i>
+                </div>
+            </div>
+            <div class="ui right floated animated fade purple button" data-bind="click: print">
+                <div class="visible content">Print</div>
+                <div class="hidden content">
+                    <i class="filter icon"></i>
+                </div>
+            </div>
+            
+            <div id="SendPrintOut">
+                <h4 class="ui huge header center aligned">Transaction Receipt</h4>
+                <div class="ui small form raised segment">
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Reciepient's Name</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: RecipientName"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Unique Code</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: UniqueCode"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Country</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: RecipientCountryName"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Amount</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: Amount"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Fee</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: Fee"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Total Paid</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: TotalAmount"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two fields">
+                        <div class=" field">
+                            <label>Exchange Rate</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: ExchangeRate"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Amount to be Recieved</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: AmountInCedis"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three fields">
+                        <div class=" field">
+                            <label>Date</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: Date"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Sender's Name</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: SenderName"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Sender's Country</label>
+                            <div class="ui raised secondary segment">
+                                <p data-bind="text: SenderCountry"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left floated two wide column"></div>
+    </div>
+</div>
+<script src="~/Content/js/app/send.js"></script>

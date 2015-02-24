@@ -1,0 +1,37 @@
+﻿<template id='fees-template'>
+    <div class="ui raised orange segment">
+        <div class="ui right floated animated fade pink button" data-bind="click: print">
+            <div class="visible content">Print</div>
+            <div class="hidden content">
+                <i class="print icon"></i>
+            </div>
+        </div>
+        <div id="FeesReportTable">
+            <h2 class="ui center aligned header">Transfer Fees Report</h2>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Created On</th>
+                        <th>Minimum Amount</th>
+                        <th>Maximum Amount</th>
+                        <th>Fee</th>
+                        <th>Created By</th>
+                        <th>Last Updated By</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: data">
+                    <tr>
+                        <td data-bind="text: $index() + 1" class="left floated"></td>
+                        <td data-bind="text: moment($data.Created).format('Do MMMM, YYYY')"></td>
+                        <td data-bind="text: accounting.formatMoney($data.MinimumAmount,' ')"></td>
+                        <td data-bind="text: accounting.formatMoney($data.MaximumAmount,' ')"></td>
+                        <td data-bind="text: accounting.formatMoney($data.Fee,' ')"></td>
+                        <td data-bind="text: $data.CreatedBy.FullName"></td>
+                        <td data-bind="text: $data.UpdatedBy.FullName"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

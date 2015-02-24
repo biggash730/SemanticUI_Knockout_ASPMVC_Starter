@@ -1,0 +1,22 @@
+2014-11-20 00:26:13.0065 ERROR The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.
+2014-11-20 00:26:55.7983 ERROR The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.
+2014-11-20 00:28:57.6494 ERROR The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.
+2014-11-20 00:34:23.2391 ERROR The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+An error occurred while updating the entries. See the inner exception for details.
+An error occurred while updating the entries. See the inner exception for details.
+2014-11-20 01:31:33.0624 ERROR User Name test1 is aready in use.
+2014-11-20 13:50:08.3046 ERROR You can not login because your user is not active
+2014-11-20 14:40:57.2357 ERROR Please check the login details
+2014-11-20 23:46:09.3089 ERROR Sequence contains no elements
+2014-11-20 23:50:00.5563 ERROR Sequence contains no elements
+2014-11-20 23:54:30.5531 ERROR Sequence contains no elements

@@ -1,0 +1,71 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    @Html.AntiForgeryToken()
+    <div id="mainSidebarContent" class="ui left vertical inverted labeled icon menu" style="height: 100%;  margin-bottom: -40px;">
+        <a class="item" href="@Url.Action("Index","Home" )">
+            <img class="circular ui image" src="/Content/images/logo.jpg" alt="logo" style="width: 92px; height: 92px;">
+        </a>
+        <a class="item" href="@Url.Action("Index","Home" )">
+            <i class="icon dashboard"></i>
+            Dashboard
+        </a>
+        @if (User.IsInRole("Administrator") || User.IsInRole("Agent"))
+        {
+            <a class="item" href="@Url.Action("Send","Home" )">
+                <i class="icon mail"></i>
+                Send Money
+            </a>
+        }
+        @if (User.IsInRole("Administrator") || User.IsInRole("Agent"))
+        {
+            <a class="item" href="@Url.Action("Recieve","Home" )">
+                <i class="icon book"></i>
+                Pay Money
+            </a>
+        }
+        @if (User.IsInRole("Administrator") || User.IsInRole("Agent"))
+        {
+            <a class="item" href="@Url.Action("Cancel","Home" )">
+                <i class="icon sign out"></i>
+                Cancel Transfer
+            </a>
+        }
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="item" href="@Url.Action("Reverse","Home" )">
+                <i class="icon recycle"></i>
+                Reverse Transaction
+            </a>
+        }
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="item" href="@Url.Action("Index","Branches" )">
+                <i class="icon building"></i>
+                Branches
+            </a>
+        }
+        <a class="item" href="@Url.Action("Index","Reports" )">
+            <i class="icon ticket"></i>
+            Reports
+        </a>
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="item" href="@Url.Action("Index","Users" )">
+                <i class="icon users"></i>
+                Users
+            </a>
+        }
+
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="item" href="@Url.Action("Index","Settings" )">
+                <i class="icon settings"></i>
+                Settings
+            </a>
+        }
+
+    </div>
+}
+
+
+

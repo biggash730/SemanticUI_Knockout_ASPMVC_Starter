@@ -1,0 +1,130 @@
+﻿<template id='countries-template'>
+    <div class="ui raised blue segment">
+        <div class="ui blue ribbon huge label">
+            Countries
+        </div>
+        <div class="ui right floated animated fade positive button" data-bind="click: showAdd">
+            <div class="visible content">Add New</div>
+            <div class="hidden content">
+                <i class="add sign icon"></i>
+            </div>
+        </div>
+        <table class="ui table segment">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Short Code</th>
+                    <th>Currency</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: data">
+                <tr>
+                    <td data-bind="text: $index() + 1" class="left floated"></td>
+                    <td data-bind="text: $data.Name"></td>
+                    <td data-bind="text: $data.ShortCode"></td>
+                    <td data-bind="text: $data.Currency.Name"></td>
+                    <td data-bind="text: $data.Description"></td>
+                    <td>
+                        <div class="ui buttons right floated">
+                            <div class="ui animated fade teal button" data-bind="click: $parent.showEdit.bind($root)">
+                                <div class="visible content">Edit</div>
+                                <div class="hidden content">
+                                    <i class="edit icon"></i>
+                                </div>
+                            </div>
+                            <div class="or"></div>
+                            <div class="ui animated fade red button" data-bind="click: $parent.showDelete.bind($root)">
+                                <div class="visible content">Delete</div>
+                                <div class="hidden content">
+                                    <i class="remove icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="CountryFormModal" class="ui small modal raised blue segment">
+        <i class="close icon"></i>
+        <div class="ui blue ribbon huge label">
+            Country
+        </div>
+        <div class="ui form raised segment" id="addCountryForm">
+            <div class="content">
+                <div class="field" title="Name of Country">
+                    <label>Name</label>
+                    <div class="ui left icon corner labeled icon input">
+                        <input type="text" placeholder="Name" data-bind="value: Name" name="name">
+                        <i class="user icon"></i>
+                        <div class="ui corner label">
+                            <i class="icon asterisk"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Short Code</label>
+                    <div class="ui left icon corner labeled icon input">
+                        <input type="text" placeholder="Short Code" data-bind="value: ShortCode" name="shortcode">
+                        <i class="tags icon"></i>
+                        <div class="ui corner label">
+                            <i class="icon asterisk"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Currency</label>
+                    <select class="ui fluid selection input" data-bind="options: Currencies, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Currency...', value: CurrencyId"></select>
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <div class="ui left icon corner labeled icon input">
+                        <input type="text" placeholder="Description" data-bind="value: Description" name="description">
+                        <i class="tags icon"></i>
+                        <div class="ui corner label">
+                            <i class="icon asterisk"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui buttons right floated">
+                    <div class="ui animated fade teal submit button" data-bind="click: add">
+                        <div class="visible content">Save</div>
+                        <div class="hidden content">
+                            <i class="save icon"></i>
+                        </div>
+                    </div>
+                    <div class="or"></div>
+                    <div class="ui animated fade red button">
+                        <div class="visible content">Cancel</div>
+                        <div class="hidden content">
+                            <i class="remove icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="CountryDeleteModal" class="ui small modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Delete
+        </div>
+        <div class="content">
+            Do you really want to delete the record?
+        </div>
+        <div class="actions">
+            <div class="ui buttons">
+                <div class="ui positive button" data-bind="click: del">Yes</div>
+                <div class="or"></div>
+                <div class="ui primary button">No</div>
+            </div>
+        </div>
+    </div>
+</template>

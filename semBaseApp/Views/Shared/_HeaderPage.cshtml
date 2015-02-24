@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNet.Identity
+@using vls.Classes.Helpers
+@using vls.Classes.Repositories
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.AntiForgeryToken()
+    var user = new UserRepo().GetUser(User.Identity.GetUserId());
+    <div class="ui grid" style="padding: 10px">
+        <div class="left floated thirteen wide column">
+            <h1 class="ui header">
+                <i class="tags icon"></i>
+                <div class="content">
+                    Instacash
+                </div>
+            </h1>
+        </div>
+        <div class="right floated three wide column">
+            <h2 class="ui header">
+                <div class="ui dropdown item" id="userDropdown">
+                    @user.FullName <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="@Url.Action("ChangePassword", "Users")">Manage Account</a>
+                        <a class="item" href="@Url.Action("Logout","Users" )">Logout</a>
+                    </div>
+                </div>
+            </h2>
+        </div>
+    </div>@*
+    <div class="ui divider"></div>*@
+}
+else
+{
+    <div class="ui grid" style="padding: 10px">
+        <div class="twelve wide column">
+            <h1 class="ui header">
+                <i class="tags icon"></i>
+                <div class="content">
+                    Instacash
+                </div>
+            </h1>
+        </div>
+    </div>
+    @*<div class="ui divider"></div>*@
+}
+
+<script src="~/Content/js/app/user.js"></script>

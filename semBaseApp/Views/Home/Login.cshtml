@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ui grid " id="LoginPage">
+    <div class="ui stackable three column grid">
+        <div class="column"></div>
+        <div class="column">
+            <h2 class="ui huge header center aligned">
+                <i class="lock icon"></i>Login
+            </h2>
+            <div class="ui form segment inverted" id="LoginForm">
+                <div class="field">
+                    <label>Username</label>
+                    <div class="ui left icon corner labeled input">
+                        <input type="text" placeholder="Username" name="username" data-bind="value: Username">
+                        <i class="user icon"></i>
+                        <div class="ui corner label">
+                            <i class="icon asterisk"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <div class="ui left icon corner labeled input">
+                        <input type="password" name="password" data-bind="value: Password" placeholder="Password">
+                        <i class="key icon"></i>
+                        <div class="ui corner label">
+                            <i class="icon asterisk"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui animated fade submit positive button" data-bind="click: login">
+                    <div class="visible content">Login</div>
+                    <div class="hidden content">
+                        <i class="unlock icon"></i>
+                    </div>
+                </div>
+                @*<div class="ui teal submit button" data-bind="click: login">Login</div>*@
+            </div>
+        </div>
+        <div class="column"></div>
+    </div>
+</div>
+
+<script src="~/Content/js/app/login.js"></script>

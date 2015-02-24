@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div id="SettingsPage" class="ui grid">
+    <div class="sixteen wide column">
+        <div class="ui green raised segment">
+            <div class="ui green ribbon huge label">
+                APPLICATION SETTINGS
+            </div>
+            <div id="selectModelDropdown" class="ui right floated blue labeled icon top left pointing dropdown button">
+                <i class="tasks icon"></i>
+                <span class="text">Select Model</span>
+                <div class="menu">
+                    <div class="item">Countries</div>
+                    <div class="item">Cities</div>
+                    <div class="item">Currencies</div>
+                    <div class="item">Fees</div>
+                    <div class="item">Questions</div>
+                    <div class="item">Identification Types</div>
+                    <div class="item active">Roles</div>
+                </div>
+            </div>
+
+            <div class="ui horizontal icon divider">
+                <i class="circular settings icon"></i>
+            </div>
+            <div id="SettingsContainer" data-bind='component: componentName'></div>
+            @Html.Partial("_CountriesDiv")
+            @Html.Partial("_CurrenciesDiv")
+            @Html.Partial("_FeesDiv")
+            @Html.Partial("_RolesDiv")
+            @Html.Partial("_CitiesDiv")
+            @Html.Partial("_QuestionsDiv")
+            @Html.Partial("_IdTypesDiv")
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Content/js/app/settings.js"></script>

@@ -1,0 +1,87 @@
+﻿<template id='branches-template'>
+    <div class="ui raised purple segment">
+        <div class="ui purple ribbon huge label">Branches Report</div>
+
+        <div class="ui right floated animated fade pink button" data-bind="click: print">
+            <div class="visible content">Print</div>
+            <div class="hidden content">
+                <i class="print icon"></i>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui styled fluid accordion" id="branchesFilterAccordion">
+            <div class="title">
+                <i class="dropdown icon"></i>
+                Filter Records
+            </div>
+            <div class="content">
+                <div class="ui form">
+                    <div class="four fields">
+                        <div class=" field">
+                            <label>Branch Name</label>
+                            <div class="ui left icon input">
+                                <i class="tags icon"></i>
+                                <input type="text" placeholder="Branch Name" data-bind="value: Name">
+                            </div>
+                        </div>
+                        <div class=" field">
+                            <label>Amount To</label>
+                            <div class="ui left icon input">
+                                <i class="unlink icon"></i>
+                                <input type="email" placeholder="Email" data-bind="value: Email">
+                            </div>
+                        </div>
+                        <div class=" field">
+                            <label>City</label>
+                            <select class="ui fluid selection input" data-bind="options: Cities, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Select City...', value: CityId"></select>
+                        </div>
+                        <div class=" field">
+                            <label>Country</label>
+                            <select class="ui fluid selection input" data-bind="options: Countries, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Select Country...', value: CountryId"></select>
+                        </div>
+                        <div class="ui labeled icon purple button" data-bind="click: FilterRecords">
+                            <i class="filter icon"></i>
+                            Filter
+                        </div>
+                        <div class="ui right labeled icon red button" data-bind="click: ClearFields">
+                            <i class="refresh icon"></i>
+                            Clear
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ui divider"></div>
+        <div id="BranchesReportTable">
+            <h2 class="ui center aligned header">All Branches Report</h2>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>Postal Address</th>
+                        <th>Residential Address</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: data">
+                    <tr>
+                        <td data-bind="text: $index() + 1" class="left floated"></td>
+                        <td data-bind="text: $data.Name"></td>
+                        <td data-bind="text: $data.Email"></td>
+                        <td data-bind="text: $data.Telephone"></td>
+                        <td data-bind="text: $data.City.Name"></td>
+                        <td data-bind="text: $data.City.Country.Name"></td>
+                        <td data-bind="text: $data.PostalAddress"></td>
+                        <td data-bind="text: $data.ResidentialAddress"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

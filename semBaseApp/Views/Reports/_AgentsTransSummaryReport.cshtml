@@ -1,0 +1,81 @@
+﻿<template id='agentsSummary-template'>
+    <div class="ui raised purple segment">
+        <div class="ui purple ribbon huge label">Agents Transactions Summary</div>
+
+        <div class="ui right floated animated fade pink button" data-bind="click: print">
+            <div class="visible content">Print</div>
+            <div class="hidden content">
+                <i class="print icon"></i>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui styled fluid accordion" id="agentsSummaryFilterAccordion">
+        <div class="title">
+            <i class="dropdown icon"></i>
+            Filter Records
+        </div>
+        <div class="content">
+            <div class="ui form">
+                <div class="four fields">
+                    <div class=" field">
+                        <label>Agent</label>
+                        <select class="ui fluid selection input" data-bind="options: Agents, optionsText: 'FullName', optionsValue: 'Id',  optionsCaption: 'Choose Agent...', value: AgentId"></select>
+                    </div>
+                    <div class=" field">
+                        <label>Branch</label>
+                        <select class="ui fluid selection input" data-bind="options: Branches, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Choose Branch...', value: BranchId"></select>
+                    </div>
+                    
+                    <div class=" field">
+                        <label>Date From</label>
+                        <div class="ui left icon input">
+                            <input type="date" name="date" placeholder="Closure Date" data-bind="value: DateFrom">
+                            <i class="calendar icon"></i>
+                        </div>
+                    </div>
+                    <div class=" field">
+                        <label>Date To</label>
+                        <div class="ui left icon input">
+                            <input type="date" name="date" placeholder="Closure Date" data-bind="value: DateTo">
+                            <i class="calendar icon"></i>
+                        </div>
+                    </div>
+                    <div class="ui labeled icon purple button" data-bind="click: FilterRecords">
+                        <i class="filter icon"></i>
+                        Filter
+                    </div>
+                    <div class="ui right labeled icon red button" data-bind="click: ClearFields">
+                        <i class="refresh icon"></i>
+                        Clear
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="ui divider"></div>
+        <div id="AgentsSummaryReportTable">
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Agent Name</th>
+                        <th>Branch</th>
+                        <th>Total Sent Transactions</th>
+                        <th>Sent Transaction Fees</th>
+                        @*<th>Total Paid Transactions</th>*@
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: data">
+                    <tr>
+                        <td data-bind="text: $index() + 1" class="left floated"></td>
+                        <td data-bind="text: $data.Agent.FullName"></td>
+                        <td data-bind="text: $data.Branch.Name"></td>
+                        <td data-bind="text: accounting.formatMoney($data.TotalSentTransactions,'₵ ')"></td>
+                        <td data-bind="text: accounting.formatMoney($data.SentTransactionFees,'₵ ')"></td>
+                        @*<td data-bind="text: accounting.formatMoney($data.TotalPaidTransactions,'₵ ')"></td>*@
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

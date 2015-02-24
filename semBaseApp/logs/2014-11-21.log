@@ -1,0 +1,4 @@
+2014-11-21 08:20:17.6043 ERROR Introducing FOREIGN KEY constraint 'FK_dbo.Clients_dbo.AspNetUsers_UpdatedById' on table 'Clients' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
+Could not create constraint. See previous errors.
+2014-11-21 09:21:09.6578 ERROR Client => PhoneNumber1:The PhoneNumber1 field is required.
+2014-11-21 10:02:06.2978 ERROR A client with the same account number already exists in the system

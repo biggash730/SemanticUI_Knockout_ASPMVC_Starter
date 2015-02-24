@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="ui grid" id="ReportsPage">
+    <div class="sixteen wide column">
+        <div class="ui raised teal segment">
+            <div class="ui ribbon teal huge label">
+                ALL REPORTS
+            </div>
+            <div id="reportDropdown" class="ui right floated blue labeled icon top left pointing dropdown button">
+                <i class="tasks icon"></i>
+                <span class="text">Reports</span>
+                <div class="menu">
+                    <div class="item">All Transactions</div>
+                    <div class="item">Cancelled Transactions</div>
+                    <div class="item">Agent Transactions Summary</div>
+                    <div class="item">Transfer Fees</div>
+                    <div class="item">Branches</div>
+                </div>
+            </div>
+            <div class="ui divider"></div>
+            <div id="ReportsContainer" data-bind='component: componentName'></div>
+            @Html.Partial("_AgentsTransSummaryReport")
+            @Html.Partial("_CancelledTransactionsReport")
+            @Html.Partial("_BranchesReport")
+            @Html.Partial("_AllTransactionsReport")
+            @Html.Partial("_FeesReport")
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/app/reports.js"></script>

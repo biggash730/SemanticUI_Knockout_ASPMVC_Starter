@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Cancel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="ui grid" id="CancelPage">
+    <div class="sixteen wide column">
+        <div class="ui raised red segment">
+            <div class="ui ribbon red huge label">Cancel Transfer</div>
+
+            <div class="ui horizontal icon divider">
+                <i class="circular sign out icon"></i>
+            </div>
+            <div class="ui grid" data-bind="visible: showDetailsView" style="display: none;">
+                <div class="left floated three wide column"></div>
+                <div class="left floated ten wide column">
+                    <div class="ui form raised green segment" id="AddPayInForm">
+                        <h4 class="ui huge header center aligned">Transfer Details</h4>
+                        <div class="ui small form raised segment">
+                            <div class="three fields">
+                                <div class="field">
+                                    <label>Date</label>
+                                    <input type="text" placeholder="Date" data-bind="value: Date" readonly="readonly">
+                                </div>
+                                <div class="field">
+                                    <label>Amount</label>
+                                    <input type="text" name="amount" data-bind="value: Amount" readonly="readonly">
+                                </div>
+                                <div class="field">
+                                    <label>Fee</label>
+                                    <input type="text" name="fee" data-bind="value: Fee" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class=" field">
+                                <label>Unique Code</label>
+                                <input type="text" data-bind="value: UniqueCode" readonly="readonly">
+                            </div>
+                            <div class="two fields">
+                                <div class=" field">
+                                    <label>Sender's Name</label>
+                                    <input type="text" data-bind="value: SenderName" readonly="readonly">
+                                </div>
+                                <div class="field">
+                                    <label>Sender's Mobile Number</label>
+                                    <input type="text" data-bind="value: SenderPhoneNumber" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="three fields">
+                                <div class="field">
+                                    <label>Recipient's Name</label>
+                                    <input type="text" data-bind="value: RecipientName" readonly="readonly">
+                                </div>
+                                <div class="field">
+                                    <label>Recipient's Mobile Number</label>
+                                    <input type="text" data-bind="value: RecipientPhoneNumber" readonly="readonly">
+                                </div>
+                                <div class="field">
+                                    <label>Recipient's Country</label>
+                                    <input type="text" data-bind="value: RecipientCountryName" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Notes</label>
+                                <input type="text" data-bind="value: Notes" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="ui buttons right floated">
+                            <div class="ui animated fade teal submit button" data-bind="click: cancel">
+                                <div class="visible content">Cancel</div>
+                                <div class="hidden content">
+                                    <i class="save icon"></i>
+                                </div>
+                            </div>
+                            <div class="or"></div>
+                            <div class="ui animated fade red button" data-bind="click: closeDetailsView">
+                                <div class="visible content">Close</div>
+                                <div class="hidden content">
+                                    <i class="remove icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                </div>
+                <div class="right floated three wide column"></div>
+            </div>
+
+            @*<div class="ui small icon input">
+                    <input type="text" placeholder="Search Anything...">
+                    <i class="search icon"></i>
+                </div>*@
+            <div class="right floated ui pagination menu">
+                <a class="icon item" data-bind="click: prevPage">
+                    <i class="left arrow icon"></i>
+                </a>
+                <a class="active item" data-bind="text: Page()+1">
+                </a>
+                <a class="icon item" data-bind="click: nextPage">
+                    <i class="right arrow icon"></i>
+                </a>
+            </div>
+            <table class="ui table raised segment">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Unique Code</th>
+                        <th>Amount</th>
+                        <th>Sender's Name</th>
+                        <th>Recipient's Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: data">
+                    <tr>
+                        <td data-bind="text: ($parent.Page() * $parent.Size() ) + $index() + 1" class="left floated"></td>
+                        <td data-bind="text: moment($data.Date).format('Do MMMM, YYYY')"></td>
+                        <td data-bind="text: $data.UniqueCode"></td>
+                        <td data-bind="text: accounting.formatMoney($data.Amount,$data.Currency.Symbol)"></td>
+                        <td data-bind="text: $data.SenderName"></td>
+                        <td data-bind="text: $data.RecipientName"></td>
+                        <td>
+                            <div class="ui buttons right floated">
+                                <div class="ui animated fade teal button" data-bind="click: $parent.viewDetails.bind($root)">
+                                    <div class="visible content">View Details</div>
+                                    <div class="hidden content">
+                                        <i class="edit icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Content/js/app/Cancel.js"></script>

@@ -1,0 +1,4 @@
+2015-01-12 22:58:18.3967 ERROR Unable to create a constant value of type 'vls.Models.MyUser'. Only primitive types or enumeration types are supported in this context.
+2015-01-12 23:00:40.6340 ERROR Unable to create a constant value of type 'vls.Models.MyUser'. Only primitive types or enumeration types are supported in this context.
+2015-01-12 23:01:40.7150 ERROR Unable to create a constant value of type 'vls.Models.MyUser'. Only primitive types or enumeration types are supported in this context.
+2015-01-12 23:10:44.7165 ERROR The operation cannot be completed because the DbContext has been disposed.

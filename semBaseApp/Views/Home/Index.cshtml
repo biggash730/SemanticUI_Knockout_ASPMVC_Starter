@@ -1,0 +1,141 @@
+﻿<div id="DashboardPage">
+    <div class="row">
+        <div class="ui grid">
+            <div class=" two column row">
+                <div class="column">
+                    <div class="ui raised teal segment">
+                        <div class="ui ribbon teal huge label">
+                            <p>Total Transactions</p>
+                            <p data-bind="text: TTMonthName"></p>
+                        </div>
+                        <div id="transactionsMonthDropdown" class="ui right floated purple labeled icon top left pointing dropdown button">
+                            <i class="calendar icon"></i>
+                            <span class="text">Select Month</span>
+                            <div class="menu">
+                                <div class="item">January</div>
+                                <div class="item">February</div>
+                                <div class="item">March</div>
+                                <div class="item">April</div>
+                                <div class="item">May</div>
+                                <div class="item">June</div>
+                                <div class="item">July</div>
+                                <div class="item">August</div>
+                                <div class="item">September</div>
+                                <div class="item">October</div>
+                                <div class="item">November</div>
+                                <div class="item">December</div>
+                            </div>
+                        </div>
+                        <div class="ui horizontal icon divider">
+                            <i class="circular unlink icon"></i>
+                        </div>
+                        <div id="chart1"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui raised blue segment">
+                        <div class="ui ribbon blue huge label">
+                            <p>Total Transactions</p>
+                            <p data-bind="text: TTYearName"></p>
+                        </div>
+                        <div class="ui horizontal icon divider">
+                            <i class="circular browser icon"></i>
+                        </div>
+                        <div id="chart2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui grid">
+            <div class=" three column row">
+                <div class="column">
+                    <div class="ui raised purple segment">
+                        <a class="ui ribbon purple huge label">
+                            Pending Transfers
+                        </a>
+                        <div class="ui horizontal icon divider">
+                            <i class="circular money icon"></i>
+                        </div>
+                        <table class="ui celled table segment">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Sender's Name</th>
+                                    <th>Recipient's Name</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: Pending">
+                                <tr>
+                                    <td data-bind="text: moment($data.Date).format('Do MMMM, YYYY')"></td>
+                                    <td data-bind="text: accounting.formatMoney($data.Amount,'₵ ')"></td>
+                                    <td data-bind="text: $data.SenderName"></td>
+                                    <td data-bind="text: $data.RecipientName"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui raised green segment">
+                        <a class="ui ribbon green huge label">
+                            Paid Transfers
+                        </a>
+                        <div class="ui horizontal icon divider">
+                            <i class="circular money icon"></i>
+                        </div>
+                        <table class="ui celled table segment">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Sender's Name</th>
+                                    <th>Recipient's Name</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: Recieved">
+                                <tr>
+                                    <td data-bind="text: moment($data.Date).format('Do MMMM, YYYY')"></td>
+                                    <td data-bind="text: accounting.formatMoney($data.Amount,'₵ ')"></td>
+                                    <td data-bind="text: $data.SenderName"></td>
+                                    <td data-bind="text: $data.RecipientName"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui raised red segment">
+                        <a class="ui ribbon red huge label">
+                            Cancelled Transfers
+                        </a>
+                        <div class="ui horizontal icon divider">
+                            <i class="circular money icon"></i>
+                        </div>
+                        <table class="ui celled table segment">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Sender's Name</th>
+                                    <th>Recipient's Name</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: Cancelled">
+                                <tr>
+                                    <td data-bind="text: moment($data.Date).format('Do MMMM, YYYY')"></td>
+                                    <td data-bind="text: accounting.formatMoney($data.Amount,'₵ ')"></td>
+                                    <td data-bind="text: $data.SenderName"></td>
+                                    <td data-bind="text: $data.RecipientName"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script src="~/Content/js/app/dashboard.js"></script>

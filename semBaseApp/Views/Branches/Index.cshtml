@@ -1,0 +1,245 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="ui grid" id="BranchesPage">
+    <div class="sixteen wide column">
+        <div class="ui raised purple segment">
+            <div class="ui ribbon purple huge label">
+                Manage Branches
+            </div>
+            <div class="ui right floated animated fade positive button" data-bind="click: showAdd">
+                <div class="visible content">Add New</div>
+                <div class="hidden content">
+                    <i class="add sign icon"></i>
+                </div>
+            </div>
+            <div class="ui horizontal icon divider">
+                <i class="circular puzzle icon"></i>
+            </div>
+            <div class="ui grid" data-bind="visible: showAddView" style="display: none;">
+                <div class="left floated three wide column"></div>
+                <div class="left floated ten wide column">
+                    <div class="ui form raised purple segment" id="AddBranchForm">
+                        <h4 class="ui huge header center aligned" data-bind="text: FormTitle"></h4>
+                        <div class="ui horizontal icon divider">
+                            <i class="circular puzzle piece icon"></i>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Name</label>
+                                <div class="ui left icon corner labeled icon input">
+                                    <input type="text" placeholder="Branch Name" data-bind="value: Name">
+                                    <i class="tags icon"></i>
+                                    <div class="ui corner label">
+                                        <i class="icon asterisk"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Select City</label>
+                                <select class="ui fluid selection input" data-bind="options: Cities, optionsText: 'Name', optionsValue: 'Id',  optionsCaption: 'Select City...', value: CityId"></select>
+                            </div>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Email</label>
+                                <div class="ui left icon corner labeled icon input">
+                                    <input type="email" placeholder="Email" data-bind="value: Email">
+                                    <i class="unlink icon"></i>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Telephone Number</label>
+                                <div class="ui left icon corner labeled icon input">
+                                    <input type="tel" placeholder="Telephone Number" data-bind="value: Telephone">
+                                    <i class="mobile icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Postal Address</label>
+                                <textarea data-bind="value: PostalAddress" rows="2"></textarea>
+                            </div>
+                            <div class="field">
+                                <label>Residential Address</label>
+                                <textarea data-bind="value: ResidentialAddress" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="ui buttons right floated">
+                            <div class="ui animated fade teal submit button" data-bind="click: add">
+                                <div class="visible content">Save</div>
+                                <div class="hidden content">
+                                    <i class="save icon"></i>
+                                </div>
+                            </div>
+                            <div class="or"></div>
+                            <div class="ui animated fade red button" data-bind="click: closeForms">
+                                <div class="visible content">Close</div>
+                                <div class="hidden content">
+                                    <i class="remove icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                </div>
+                <div class="right floated three wide column"></div>
+            </div>
+            <div class="ui grid" data-bind="visible: showViewView" style="display: none;">
+                <div class="left floated three wide column"></div>
+                <div class="left floated ten wide column">
+                    <div class="ui form raised blue segment">
+                        <h4 class="ui huge header center aligned">
+                            <i class="home icon"></i>
+                            Branch Details
+                        </h4>
+                        <div class="ui horizontal icon divider">
+                            <i class="circular user icon"></i>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label><b>Name</b></label>
+                                <div class="ui raised secondary segment">
+                                    <p data-bind="text: Name"></p>
+                                    <div class="ui corner label">
+                                        <i class="icon tags"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label><b>City</b></label>
+                                <div class="ui raised secondary segment">
+                                    <p data-bind="text: CityName"></p>
+                                    <div class="ui corner label">
+                                        <i class="icon tag"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label><b>Email</b></label>
+                                <div class="ui raised secondary segment">
+                                    <p data-bind="text: Email"></p>
+                                    <div class="ui corner label">
+                                        <i class="icon unlink"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label><b>Telephone Address</b></label>
+                                <div class="ui raised secondary segment">
+                                    <p data-bind="text: Telephone"></p>
+                                    <div class="ui corner label">
+                                        <i class="icon mobile"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label><b>Postal Address</b></label>
+                                <div class="ui raised secondary segment">
+                                    <p data-bind="text: PostalAddress"></p>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label><b>Residential Address</b></label>
+                                <div class="ui raised secondary segment">
+                                    <p data-bind="text: ResidentialAddress"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui buttons right floated">
+                            <div class="ui animated fade red button" data-bind="click: closeForms">
+                                <div class="visible content">Close</div>
+                                <div class="hidden content">
+                                    <i class="remove icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                </div>
+                <div class="right floated three wide column"></div>
+            </div>
+            
+            <table class="ui table raised segment">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Telephone</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: data">
+                    <tr>
+                        <td data-bind="text: $index() + 1" class="left floated"></td>
+                        <td data-bind="text: $data.Name"></td>
+                        <td data-bind="text: $data.Telephone"></td>
+                        <td data-bind="text: $data.City.Name"></td>
+                        <td data-bind="text: $data.City.Country.Name"></td>
+                        <td>
+                            <div class="ui buttons right floated">
+                                <div class="ui animated fade purple button" data-bind="click: $parent.showView.bind($root)">
+                                    <div class="visible content">View</div>
+                                    <div class="hidden content">
+                                        <i class="unhide icon"></i>
+                                    </div>
+                                </div>
+                                <div class="or"></div>
+                                <div class="ui animated fade teal button" data-bind="click: $parent.showEdit.bind($root)">
+                                    <div class="visible content">Edit</div>
+                                    <div class="hidden content">
+                                        <i class="edit icon"></i>
+                                    </div>
+                                </div>
+                                <div class="or"></div>
+                                <div class="ui animated fade red button" data-bind="click: $parent.showDelete.bind($root)">
+                                    <div class="visible content"> Delete</div>
+                                    <div class="hidden content">
+                                        <i class="remove sign icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="BranchDeleteModal" class="ui small modal">
+            <i class="close icon"></i>
+            <div class="header">
+                Delete
+            </div>
+            <div class="content">
+                Do you really want to delete this record?
+            </div>
+            <div class="actions">
+                <div class="ui buttons">
+                    <div class="ui animated fade teal button" data-bind="click: del">
+                        <div class="visible content">Yes</div>
+                        <div class="hidden content">
+                            <i class="checked checkbox icon"></i>
+                        </div>
+                    </div>
+                    <div class="or"></div>
+                    <div class="ui animated fade red button">
+                        <div class="visible content">No</div>
+                        <div class="hidden content">
+                            <i class="remove circle icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/app/branches.js"></script>

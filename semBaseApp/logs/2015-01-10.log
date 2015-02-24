@@ -1,0 +1,4 @@
+2015-01-10 04:16:37.5437 ERROR Sequence contains no elements
+2015-01-10 04:20:49.0879 ERROR The operation cannot be completed because the DbContext has been disposed.
+2015-01-10 04:21:29.7892 ERROR Sequence contains no elements
+2015-01-10 10:33:39.3183 ERROR Transaction => SenderName:The SenderName field is required.,SenderPhoneNumber:The SenderPhoneNumber field is required.,RecipientName:The RecipientName field is required.,RecipientPhoneNumber:The RecipientPhoneNumber field is required.,Status:The Status field is required.
