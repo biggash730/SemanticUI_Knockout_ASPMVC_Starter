@@ -1,6 +1,7 @@
 ﻿require.config({
-    //baseUrl: "Content/js",
+    baseUrl: "Content/js/lib",
     paths: {
+        app: "../app",
         "jquery": "Content/js/jquery.min",
         "semantic": "Content/js/semantic.min",
         "knockout": "Content/js/knockout",
