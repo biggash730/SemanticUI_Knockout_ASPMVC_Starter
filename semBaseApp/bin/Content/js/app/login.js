@@ -1,5 +1,8 @@
-﻿require(['ko', 'jquery'], function (ko, $) {
+﻿require(['knockout', 'jquery'], function (ko, $) {
+
     $(document).ready(function () {
+
+        console.log("inside the login file");
 
         function loginViewModel() {
             console.log("inside the login file");
