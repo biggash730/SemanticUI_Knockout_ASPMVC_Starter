@@ -19,15 +19,14 @@ namespace vls.Classes.Repositories
         {
             try
             {
-                var filter = new UserFilter {UserId = userId};
+                var filter = new UserFilter { UserId = userId };
                 using (var db = new DataContext())
                 {
                     var roles = db.Roles.ToDictionary(x => x.Id);
-                    
+
                     var data = filter.BuildQuery(db.Users).Include(x => x.Roles).First();
-                    
+
                     if (data == null) return DataHelpers.ReturnJsonData(null, false, "No Data Found", 0);
-                    var branch = db.AgentBranches.Include(x=> x.Branch.City.Country).FirstOrDefault(x => x.AgentId == data.Id);
                     var activeUser = new UserViewModel
                     {
                         UserName = data.UserName,
@@ -39,10 +38,7 @@ namespace vls.Classes.Repositories
                         Id = data.Id,
                         IsActive = data.IsActive,
                         Updated = data.Updated,
-                        Roles = roles.First(x => x.Key == data.Roles.First().RoleId).Value.Name,
-                        BranchId = roles.First(x => x.Key == data.Roles.First().RoleId).Value.Name.Contains("Agent") && branch != null ? branch.BranchId : 0,
-                        Branch = roles.First(x => x.Key == data.Roles.First().RoleId).Value.Name.Contains("Agent") && branch != null ? branch.Branch : new Branch()
-
+                        Roles = roles.First(x => x.Key == data.Roles.First().RoleId).Value.Name
                     };
                     return DataHelpers.ReturnJsonData(activeUser, true, "Loaded successfully", 1);
                 }
@@ -62,7 +58,6 @@ namespace vls.Classes.Repositories
                     var roles = db.Roles.ToDictionary(x => x.Id);
                     var data = filter.BuildQuery(db.Users).Include(x => x.Roles).ToList().OrderBy(x => x.Updated);
                     if (!data.Any()) return DataHelpers.ReturnJsonData(null, false, "No Data Found", 0);
-                    var branches = db.AgentBranches.Include(x => x.Branch).ToList();
                     var users = data.Select(myUser => new UserViewModel
                     {
                         UserName = myUser.UserName,
@@ -74,9 +69,7 @@ namespace vls.Classes.Repositories
                         Id = myUser.Id,
                         IsActive = myUser.IsActive,
                         Updated = myUser.Updated,
-                        Roles = roles.First(x=> x.Key == myUser.Roles.First().RoleId).Value.Name,
-                        BranchId = roles.First(x => x.Key == myUser.Roles.First().RoleId).Value.Name.Contains("Agent") && branches.First(x => x.AgentId == myUser.Id) != null ? branches.First(x => x.AgentId == myUser.Id).BranchId : 0,
-                        Branch = roles.First(x => x.Key == myUser.Roles.First().RoleId).Value.Name.Contains("Agent") && branches.First(x => x.AgentId == myUser.Id) != null ? branches.First(x => x.AgentId == myUser.Id).Branch : new Branch()
+                        Roles = roles.First(x => x.Key == myUser.Roles.First().RoleId).Value.Name
                     }).Where(x => !x.Roles.Contains("Administrator")).ToList();
 
                     return users.Any() ? DataHelpers.ReturnJsonData(users, true, "Loaded successfully", users.Count()) : DataHelpers.ReturnJsonData(users, false, "No Data Found", 0);
@@ -111,11 +104,7 @@ namespace vls.Classes.Repositories
                         userMan.RemoveFromRole(oRecord.Id, role);
                     }
                     userMan.AddToRole(oRecord.Id, newRecord.Roles);
-                    if (newRecord.Roles.Contains("Agent"))
-                    {
-                        UpdateAgentBranch(newRecord, db);
-                    }
-                    
+
                     db.SaveChanges();
                     return DataHelpers.ReturnJsonData(null, true, "Updated successfully", 1);
                 }
@@ -123,15 +112,6 @@ namespace vls.Classes.Repositories
             catch (Exception e)
             {
                 return DataHelpers.ExceptionProcessor(e);
-            }
-        }
-
-        public void UpdateAgentBranch(UserViewModel newRecord, DataContext db)
-        {
-            var rec = db.AgentBranches.FirstOrDefault(x => x.AgentId == newRecord.Id);
-            if (rec!=null)
-            {
-                rec.BranchId = newRecord.BranchId;
             }
         }
 
@@ -194,39 +174,6 @@ namespace vls.Classes.Repositories
         public MyUser GetUserByName(string username, DataContext db)
         {
             return db.Users.FirstOrDefault(p => p.UserName == username);
-        }
-
-        public JsonData GetAgents()
-        {
-            try
-            {
-                using (var db = new DataContext())
-                {
-                    var agents = db.AgentBranches.Include(x=>x.Branch.City.Country).ToDictionary(x=>x.AgentId);
-                    var users = db.Users.Where(x => agents.Keys.Contains(x.Id) && x.IsActive ).ToList();
-                    if (!users.Any()) return DataHelpers.ReturnJsonData(null, false, "No Data Found", 0);
-                    var usr = users.Select(myUser => new UserViewModel
-                    {
-                        UserName = myUser.UserName,
-                        FullName = myUser.FullName,
-                        Created = myUser.Created,
-                        Email = myUser.Email,
-                        PhoneNumber = myUser.PhoneNumber,
-                        DateOfBirth = myUser.DateOfBirth,
-                        Id = myUser.Id,
-                        IsActive = myUser.IsActive,
-                        Updated = myUser.Updated,
-                        BranchId = agents.First(x=>x.Key == myUser.Id).Value.BranchId,
-                        Branch = agents.First(x => x.Key == myUser.Id).Value.Branch
-                    }).ToList();
-
-                    return usr.Any() ? DataHelpers.ReturnJsonData(usr, true, "Loaded successfully", usr.Count()) : DataHelpers.ReturnJsonData(users, false, "No Data Found", 0);
-                }
-            }
-            catch (Exception e)
-            {
-                return DataHelpers.ExceptionProcessor(e);
-            }
         }
     }
 }

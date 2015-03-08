@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ko_test</title>
+    <!-- build:css -->
+      <link href="css/semantic.min.css" rel="stylesheet" />
+      <link href="css/styles.css" rel="stylesheet">
+      <!--<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+-->
+      <!-- endbuild -->
+    <!-- build:js -->
+      <script src="app/require.config.js"></script>
+      <script data-main="app/startup" src="js/lib/require.js"></script>
+    <!-- endbuild -->
+  </head>
+<body>
+    <div class="ui grid" style="height: 100%">
+        <nav-bar params="route: route"></nav-bar>
+        <div class="row" style="height: 100%">
+            <div class="sixteen wide column" style="padding-left: 20px; padding-right: 10px" data-bind="component: { name: route().page, params: route }">
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>

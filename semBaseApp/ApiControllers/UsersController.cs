@@ -17,6 +17,7 @@ namespace vls.ApiControllers
     {
         [HttpPost]
         [Route("users/get")]
+        [Route("users/users/get")]
         public JsonData Get()
         {
             return new UserRepo().Get(User.Identity.GetUserId());
@@ -24,6 +25,7 @@ namespace vls.ApiControllers
 
         [HttpPost]
         [Route("Users/getall")]
+        [Route("users/users/getall")]
         public JsonData GetUsers(int page, int size)
         {
             var filter = new UserFilter { Pager = { Page = page, Size = size } };
@@ -32,6 +34,7 @@ namespace vls.ApiControllers
 
         [HttpPost]
         [Route("Users/Update")]
+        [Route("users/users/update")]
         public JsonData Update(UserViewModel data)
         {
             return new UserRepo().Update(data, User.Identity.GetUserId());
@@ -40,6 +43,7 @@ namespace vls.ApiControllers
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         [Route("Users/Deactivate")]
+        [Route("users/users/deactivate")]
         public JsonData Deactivate(string id)
         {
             return new UserRepo().Deactivate(id, User.Identity.GetUserId());
@@ -155,11 +159,6 @@ namespace vls.ApiControllers
                     }
 
                     userMan.AddToRole(user.Id, model.Roles);
-                    if (model.Roles.Contains("Agent"))
-                    {
-                        CreateAgentBranch(user, model.BranchId, db);
-                    }
-                    
 
                     db.SaveChanges();
                     return DataHelpers.ReturnJsonData(user.Id, true, "Registration was successful. Please Verify your account");
@@ -171,21 +170,43 @@ namespace vls.ApiControllers
             }
         }
 
-        public void CreateAgentBranch(MyUser user, long branchId, DataContext db)
+        [HttpPost]
+        [Route("users/Reset")]
+        public async Task<JsonData> Reset(UserViewModel model)
         {
-            db.AgentBranches.Add(new AgentBranch
+            try
             {
-                AgentId = user.Id,
-                BranchId = branchId
-            });
+                var db = new DataContext();
+                var userMan = new UserManager<MyUser>(new UserStore<MyUser>(db));
+                userMan.UserValidator = new UserValidator<MyUser>(userMan)
+                {
+                    AllowOnlyAlphanumericUserNames =
+                        false
+                };
+                var user = await userMan.FindByEmailAsync(model.Email);
+                if (user == null) throw new Exception("please check the email address");
+                //todo: generate a unique password and email it to the user
+                var newPassword = user.FullName.Substring(2, 3) + user.PasswordHash.Substring(0, 5);
+                var result = await userMan.RemovePasswordAsync(user.Id);
+                if (!result.Succeeded) throw new Exception(string.Join(", ", result.Errors));
+                var result2 = await userMan.AddPasswordAsync(user.Id, newPassword);
+                if (!result2.Succeeded) throw new Exception(string.Join(", ", result2.Errors));
+                //todo: Email the new password to the user
+                return DataHelpers.ReturnJsonData(null, true, "A new password has been emailed to your email address");
+            }
+            catch (Exception e)
+            {
+                return DataHelpers.ExceptionProcessor(e);
+            }
         }
 
         [HttpPost]
-        [Route("Home/Agents/get")]
-        [Route("Agents/get")]
-        public JsonData GetAgents()
+        [Route("Roles/getall")]
+        [Route("users/roles/getall")]
+        public JsonData Get(RoleFilter filter)
         {
-            return new UserRepo().GetAgents();
+            return new RoleRepo().Get(filter);
         }
+
     }
 }

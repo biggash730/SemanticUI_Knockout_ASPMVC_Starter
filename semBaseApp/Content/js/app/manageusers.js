@@ -31,9 +31,10 @@
         self.Page = ko.observable(0);
         self.Size = ko.observable(20);
         var pager = new Pager(self.Page());
+        self.showProgress = ko.observable(false);
 
         //Validate the form
-        $('#AddUserForm').form(validationRules, {
+        /*$('#AddUserForm').form(validationRules, {
             inline: true,
             on: 'blur',
             onFailure: function () {
@@ -43,13 +44,21 @@
                 //check the validation
                 self.Validated(true);
             }
-        });
+        });*/
         
         /*$("#selectRoleDropdown:selected").text({
             onChange: function (val) {
                 console.log(val);
             }
         });*/
+        $('.modal-trigger').leanModal({
+            dismissible: false, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5 // Opacity of modal background
+        });
+        // $('#dob').datepicker();
+        $('select').material_select();
+        $('.tooltipped').tooltip({ delay: 50 });
+
         self.roleChanged = function () {
             self.IsAgent(false);
             if (self.RoleName() == "Agent") {
@@ -58,36 +67,40 @@
         };
 
         self.showAdd = function () {
-            self.FormTitle('Add New User');
-            self.showAddView(!self.showAddView());
-            self.showViewView(false);
+            self.FormTitle('New User');
+            $('#addModal').openModal();
             self.clearValues();
         };
         self.closeForms = function () {
-            self.showAddView(false);
-            self.showViewView(false);
             self.clearValues();
         };
 
         self.add = function () {
-            //$('#PleaseWaitModal').modal('show');
+            self.showProgress(true);
             if (self.Validated()) {
                 //var role = self.IsAdministrator() ? administratorString : userString;
                 var userModel = { Id: self.Id(), FullName: self.FullName(), UserName: self.UserName(), Password: self.Password(), Email: self.Email(), PhoneNumber: self.PhoneNumber(), IsActive: self.IsActive(), Roles: self.RoleName(), DateOfBirth: moment(self.DateOfBirth()).format('YYYY-MM-DD'), IdNumber: self.IdNumber(), BranchId: self.BranchId() };
-                if (self.Id() !='') {
+                
+                if (self.Id() != '') {
                     $.post('users/update', userModel, function (rData) {
+                        toast(rData.Message, 5000, 'rounded');
+                        self.showProgress(false);
                         if (rData.Success) {
-                            self.closeForms();
+                            //self.closeForms();
+                            $('#addModal').closeModal();
                             //clear form 
                             self.clearValues();
                             //get all data
                             self.getData();
-                        } //notifyMe(false, rData.Message);
+                        }
                     });
                 } else {
                     $.post('users/register', userModel, function (rData) {
+                        toast(rData.Message, 5000, 'rounded');
+                        self.showProgress(false);
                         if (rData.Success) {
-                            self.closeForms();
+                            //self.closeForms();
+                            $('#addModal').closeModal();
                             //clear form 
                             self.clearValues();
                             //get all data
@@ -96,7 +109,6 @@
                     });
                 }
             }
-            //$('#PleaseWaitModal').modal('hide');
         };
         
         self.showView = function (data) {
@@ -110,13 +122,8 @@
             self.IsActive(data.IsActive);
             self.Roles(data.Roles);
             self.IdNumber(data.IdNumber);
-            if (data.BranchId>0) {
-                self.BranchId(data.BranchId);
-                self.BranchName(data.Branch.Name);
-                self.IsAgent(true);
-            }
-            self.showAddView(false);
-            self.showViewView(!self.showViewView());
+            self.FormTitle('User Details');
+            $('#viewModal').openModal();
         };
 
         self.showEdit = function (data) {
@@ -132,35 +139,32 @@
             self.Roles(data.Roles);
             self.RoleName(data.Roles);
             self.IdNumber(data.IdNumber);
-            if (data.BranchId > 0) {
-                self.BranchId(data.BranchId);
-                self.BranchName(data.Branch.Name);
-                self.IsAgent(true);
-            }
 
             $('#username').attr("disabled", "disabled");
             $('#password').attr("disabled", "disabled");
-            
+
             self.FormTitle('Update User Details');
-            self.showAddView(!self.showAddView());
-            self.showViewView(false);
+            $('#addModal').openModal();       
+            
         };
 
         self.showDeactivate = function (data) {
             //set the values Here
             self.Id(data.Id);
-            $('#UserDeactivateModal').modal('show');
+            //$('#UserDeactivateModal').modal('show');
+            toast('<span>Activate/Deactivate User Account. Are you sure?</span><a class=&quot;btn-flat yellow-text&quot; data-bind=&quot;click: deactivate&quot;> Yes<a>', 5000)
         };
 
         self.deactivate = function () {
-            $.post('users/deactivate?id=' + self.Id(), function (rData) {
+            toast('deactivate user', 3000);
+            /*$.post('users/deactivate?id=' + self.Id(), function (rData) {
                 if (rData.Success) {
                     //clear form 
                     self.clearValues();
                     //get all data
                     self.getData();
                 }
-            });
+            });*/
         };
 
         self.clearValues = function () {
@@ -195,19 +199,18 @@
         };
 
         self.getData = function () {
+            self.showProgress(true);
             $.post('users/getall?page=' + self.Page() + '&size=' + self.Size(), function (rData) {
                 self.data([]);
+                toast(rData.Message, 1000, 'rounded');
+                self.showProgress(false);
                 if (rData.Success) self.data(rData.Data);
-                showNag(rData.Message, rData.Success);
+                
             });
         };
         
         $.post('roles/getall', { Pager: new Pager(0, allSize) }, function (rData) {
             if (rData.Success) self.RolesData(rData.Data);
-        });
-        
-        $.post('branches/getall?page=0&size=0', function (rData) {
-            if (rData.Success) self.Branches(rData.Data);
         });
 
         self.getData();

@@ -18,9 +18,10 @@
     self.City = ko.observable();
     self.Country = ko.observable();
     self.IsAgent = ko.observable(false);
+    self.showProgress = ko.observable(false);
 
     //Validate the form
-    $('#ChangePasswordForm').form(validationRules, {
+    /*$('#ChangePasswordForm').form(validationRules, {
         inline: true,
         on: 'blur',
         onFailure: function () {
@@ -30,20 +31,21 @@
             //check the validation
             self.Validated(true);
         }
-    });
+    });*/
 
     self.change = function () {
-        //$('#PleaseWaitModal').modal('show');
+        self.showProgress(true);
         if (self.Validated()) {
             var model = { OldPassword: self.OPassword(), NewPassword: self.NPassword(), ConfirmPassword: self.CPassword() };
             $.post('change', model, function (rData) {
+                toast(rData.Message, 5000, 'rounded')
+                self.showProgress(false);
                 if (rData.Success) {
                     setTimeout(function () { return true; }, 3000);
                     window.location = "/Home/Index";
-                } //notifyMe(false, rData.Message);
+                }
             });
         }
-        //$('#PleaseWaitModal').modal('show');
     };
     
     self.getData = function () {

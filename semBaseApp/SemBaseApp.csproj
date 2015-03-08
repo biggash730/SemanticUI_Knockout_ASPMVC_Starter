@@ -183,13 +183,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiControllers\BranchesController.cs" />
-    <Compile Include="ApiControllers\DashboardController.cs" />
     <Compile Include="ApiControllers\ReportsController.cs" />
     <Compile Include="ApiControllers\SettingsController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ApiControllers\TransactionsController.cs" />
     <Compile Include="ApiControllers\UsersController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -229,21 +226,10 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Classes\Helpers\DataHelpers.cs" />
     <Compile Include="Classes\Helpers\SecurityHelpers.cs" />
-    <Compile Include="Classes\Repositories\BranchRepo.cs" />
-    <Compile Include="Classes\Repositories\CityRepo.cs" />
-    <Compile Include="Classes\Repositories\IdTypeRepo.cs" />
-    <Compile Include="Classes\Repositories\CurrencyRepo.cs" />
-    <Compile Include="Classes\Repositories\DashboardRepo.cs" />
-    <Compile Include="Classes\Repositories\QuestionRepo.cs" />
-    <Compile Include="Classes\Repositories\ReportRepo.cs" />
     <Compile Include="Classes\Repositories\RoleRepo.cs" />
-    <Compile Include="Classes\Repositories\CountryRepo.cs" />
     <Compile Include="Classes\Repositories\Filters.cs" />
     <Compile Include="Classes\Repositories\IRepository.cs" />
-    <Compile Include="Classes\Repositories\TransactionRepo.cs" />
-    <Compile Include="Classes\Repositories\TransferFeeRepo.cs" />
     <Compile Include="Classes\Repositories\UserRepo.cs" />
-    <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
@@ -305,11 +291,13 @@
     <Content Include="Content\images\logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\js\app\header.js" />
     <Content Include="Content\js\app\login - Copy.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\js\app\main.js" />
+    <Content Include="Content\js\app\reset.js" />
     <Content Include="Content\js\lib\accounting.min.js" />
-    <Content Include="Content\js\app.js" />
     <Content Include="Content\js\app\branches.js" />
     <Content Include="Content\js\app\Reverse.js" />
     <Content Include="Content\js\app\dashboard.js" />
@@ -323,6 +311,7 @@
     <Content Include="Content\js\app\reports.js" />
     <Content Include="Content\js\app\Recieve.js" />
     <Content Include="Content\js\app\send.js" />
+    <Content Include="Content\js\lib\app.js" />
     <Content Include="Content\js\lib\c3.min.js" />
     <Content Include="Content\js\lib\d3.min.js" />
     <Content Include="Content\js\lib\general.js">
@@ -343,6 +332,7 @@
     <Content Include="Content\js\lib\knockout.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\js\lib\materialize.min.js" />
     <Content Include="Content\js\lib\moment.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -361,15 +351,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\js\lib\semantic.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\basic\assets\fonts\icons.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\default\assets\fonts\icons.svg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\default\assets\images\flags.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.config" />
@@ -395,7 +376,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="NLog.config" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -460,9 +440,6 @@
     <Content Include="Content\css\themes\basic\assets\fonts\icons.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="NLog.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_HeaderPage.cshtml" />
@@ -476,30 +453,6 @@
     <Content Include="Views\Reports\_FeesReport.cshtml" />
     <Content Include="Views\Reports\_AgentsTransSummaryReport.cshtml" />
     <Content Include="Views\Reports\_AllTransactionsReport.cshtml" />
-    <Content Include="themes\basic\assets\fonts\icons.eot">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\basic\assets\fonts\icons.otf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\basic\assets\fonts\icons.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\basic\assets\fonts\icons.woff">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\default\assets\fonts\icons.eot">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\default\assets\fonts\icons.otf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\default\assets\fonts\icons.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="themes\default\assets\fonts\icons.woff">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Views\Home\Send.cshtml" />
     <Content Include="Views\Home\Recieve.cshtml" />
     <Content Include="Views\Home\Cancel.cshtml" />
