@@ -11,8 +11,14 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
 
     return new Router({
         routes: [
-            { url: '',          params: { page: 'home-page' } },
-            { url: 'about',     params: { page: 'about-page' } }
+            { url: '',          params: { page: 'dashboard' } },
+            { url: 'dashboard', params: { page: 'dashboard' } },
+            { url: 'settings', params: { page: 'settings' } },
+            { url: 'reports', params: { page: 'reports' } },
+            { url: 'users', params: { page: 'users' } },
+            { url: 'changepassword', params: { page: 'change-password' } },
+            { url: 'login', params: { page: 'login' } },
+            { url: 'reset', params: { page: 'reset' } }
         ]
     });
 
@@ -29,6 +35,7 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
     }
 
     function activateCrossroads() {
+        
         function parseHash(newHash, oldHash) { crossroads.parse(newHash); }
         crossroads.normalizeFn = crossroads.NORM_AS_OBJECT;
         hasher.initialized.add(parseHash);

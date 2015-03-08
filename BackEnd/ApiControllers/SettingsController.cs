@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using BackEnd.Classes.Repositories;
 using BackEnd.Models;
 using Microsoft.AspNet.Identity;
@@ -6,6 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BackEnd.ApiControllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SettingsController : ApiController
     {
         

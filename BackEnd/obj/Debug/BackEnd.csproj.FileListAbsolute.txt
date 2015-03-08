@@ -57,8 +57,11 @@ C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\Microsoft.Ow
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\System.Web.Http.Owin.xml
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\obj\Debug\BackEnd.dll
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\obj\Debug\BackEnd.pdb
-C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\obj\Debug\BackEnd.csprojResolveAssemblyReference.cache
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\Microsoft.Owin.Security.Facebook.dll
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\obj\Debug\BackEnd.csprojResolveAssemblyReference.cache
+C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\System.Web.Cors.dll
+C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\System.Web.Http.Cors.dll
+C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\System.Web.Http.Cors.xml

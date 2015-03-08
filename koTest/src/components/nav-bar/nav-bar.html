@@ -1,32 +1,35 @@
-<div class="ui inverted large menu" id="MainMenu" style="padding-top: 15px;">
-    <a class="item" href="#">
+
+
+
+<div class="ui secondary pointing large menu" id="MainMenu" style="padding-top: 15px;">
+    <a class="item" href="#dashboard">
         <img class=" circular ui image" src="images/logo.jpg" alt="logo" style="width: 40px; height: 40px;">
     </a>
-    <a class="item" href="#dashboard" title="Dashboard" data-bind="css: { active: route().page === 'dashboard' }">
+    <a class=" purple item" href="#dashboard" title="Dashboard" data-bind="css: { active: route().page === 'dashboard' }">
         <i class="icon dashboard"></i>
         Dashboard
     </a>
-    <a class="item" href="#reports" title="Reports" data-bind="css: { active: route().page === 'reports' }">
+    <a class="blue item" href="#reports" title="Reports" data-bind="css: { active: route().page === 'reports' }">
         <i class="icon ticket"></i>
         Reports
     </a>
-    <a class="item" href="#users" title="Users">
-        <i class="icon users" title="Users"></i>
+    <a class="red item" href="#users" title="Users" data-bind="css: { active: route().page === 'users' }">
+        <i class="icon users"></i>
         Users
     </a>
-    <a class="item" href="#settings" title="Settings">
+    <a class="green item" href="#settings" title="Settings" data-bind="css: { active: route().page === 'settings' }">
         <i class="icon settings"></i>
         Settings
     </a>
-    <div class="right menu">
-        <div class="ui dropdown item" id="userDropdown">
+    <div class="right menu" style="padding-top: 15px;">
+        <div class="ui dropdown item" id="userActions">
             FullName <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item" href="" title="Manage Profile">
+                <a class="item" href="#changepassword" title="Manage Profile">
                     <i class="icon write square"></i>
                     Change Password
                 </a>
-                <a class="item" href="" title="Logout">
+                <a class="item" href="" title="Logout" data-bind="click: logout">
                     <i class="icon sign out"></i>
                     Logout
                 </a>
@@ -36,40 +39,42 @@
 
 </div>
 <div class="ui inverted large menu" id="ResponsiveMenu">
-    <a class="item" href="#">
-        InstaCash
+    <a class="item" href="#dashboard">
+        SemApp
     </a>
-    <div class="ui dropdown item" id="menuDropdown1">
+    <div class="ui dropdown item" id="menuDropdown">
         <i class="icon list layout" title="Menu"></i>
         Menu <i class="dropdown icon"></i>
         <div class="menu">
-            <a class="item" href="#dashboard">
-                <i class="icon dashboard" title="Dashboard"></i>
+            <a class=" purple item" href="#dashboard" title="Dashboard" data-bind="css: { active: route().page === 'dashboard' }">
+                <i class="icon dashboard"></i>
                 Dashboard
             </a>
-            <a class="item" href="#reports">
-                <i class="icon ticket" title="Reports"></i>
+            <a class="blue item" href="#reports" title="Reports" data-bind="css: { active: route().page === 'reports' }">
+                <i class="icon ticket"></i>
                 Reports
             </a>
-            <a class="item" href="#users" title="Users">
-                <i class="icon users" title="Users"></i>
+            <a class="red item" href="#users" title="Users" data-bind="css: { active: route().page === 'users' }">
+                <i class="icon users"></i>
                 Users
             </a>
-            <a class="item" href="#settings" title="Settings">
+            <a class="orange item" href="#settings" title="Settings" data-bind="css: { active: route().page === 'settings' }">
                 <i class="icon settings"></i>
                 Settings
             </a>
-            <div class="ui dropdown item" id="userDropdown1">
-                FullName <i class="dropdown icon"></i>
-                <div class="menu">
-                    <a class="item" href="" title="Manage Profile">
-                        <i class="icon write square"></i>
-                        Change Password
-                    </a>
-                    <a class="item" href="" title="Logout">
-                        <i class="icon sign out"></i>
-                        Logout
-                    </a>
+            <div class="right menu">
+                <div class="ui dropdown item" id="userActions">
+                    FullName <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="" title="Manage Profile">
+                            <i class="icon write square"></i>
+                            Change Password
+                        </a>
+                        <a class="item" href="" title="Logout">
+                            <i class="icon sign out"></i>
+                            Logout
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

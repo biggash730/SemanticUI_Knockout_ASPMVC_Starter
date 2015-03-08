@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using BackEnd.Classes.Helpers;
 using BackEnd.Classes.Repositories;
 using BackEnd.Models;
@@ -12,6 +13,7 @@ using Microsoft.Owin.Security;
 namespace BackEnd.ApiControllers
 {
     [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
         [HttpPost]

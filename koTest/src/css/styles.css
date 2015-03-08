@@ -34,14 +34,14 @@ body{
 }
 
 #mainSidebar {
-    background-color: #0B3B0B;
-    /*background-color: #000000;*/
+    /*background-color: #0B3B0B;
+    background-color: #000000;*/
     /*background-color: rgba(0, 0, 0, .8);
     width: 220px !important;*/
 }
 
 .ui.inverted.menu {
-background: #0B3B0B !important;
+/*background: #0B3B0B !important;*/
 }
 
 #headerRow {

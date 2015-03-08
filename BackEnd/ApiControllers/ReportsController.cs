@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using BackEnd.Classes.Repositories;
 using BackEnd.Models;
 
 namespace BackEnd.ApiControllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ReportsController : ApiController
     {
         /*[HttpPost]
