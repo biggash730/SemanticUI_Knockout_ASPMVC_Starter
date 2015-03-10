@@ -1,0 +1,8 @@
+2015-03-10 14:09:58.6521 ERROR Introducing FOREIGN KEY constraint 'FK_dbo.Countries_dbo.AspNetUsers_UpdatedById' on table 'Countries' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
+Could not create constraint. See previous errors.
+2015-03-10 14:09:58.6846 ERROR Introducing FOREIGN KEY constraint 'FK_dbo.Countries_dbo.AspNetUsers_UpdatedById' on table 'Countries' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
+Could not create constraint. See previous errors.
+2015-03-10 14:10:26.5724 ERROR Introducing FOREIGN KEY constraint 'FK_dbo.Countries_dbo.AspNetUsers_UpdatedById' on table 'Countries' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
+Could not create constraint. See previous errors.
+2015-03-10 14:10:26.5724 ERROR Introducing FOREIGN KEY constraint 'FK_dbo.Countries_dbo.AspNetUsers_UpdatedById' on table 'Countries' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
+Could not create constraint. See previous errors.

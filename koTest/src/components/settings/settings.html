@@ -1,3 +1,24 @@
-<h2>settings</h2>
+<div id="SettingsPage" class="ui grid">
+    <div class="sixteen wide column">
+        <div class="ui green raised segment">
+            <div class="ui top left green label">
+                <i class="tasks icon"></i>
+                Application Settings
+            </div>
+            <div id="selectModelDropdown" class="ui right floated blue labeled icon top left pointing dropdown mini button">
+                <i class="tasks icon"></i>
+                <span class="text">Select Model</span>
+                <div class="menu">
+                    <div class="item">Countries</div>
+                </div>
+            </div>
+            <div class="ui horizontal icon divider">
+                <i class="circular settings icon"></i>
+            </div>
+            
 
-<p data-bind='text: message'></p>
+            
+            <div id="SettingsContainer" data-bind='component: componentName'></div>
+        </div>
+    </div>
+</div>

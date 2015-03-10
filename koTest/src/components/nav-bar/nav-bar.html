@@ -1,19 +1,19 @@
 
 
 
-<div class="ui secondary pointing large menu" id="MainMenu" style="padding-top: 15px;">
+<div class="ui secondary pointing large menu" id="MainMenu" style="padding-top: 15px;" data-bind="visible: loggedIn">
     <a class="item" href="#dashboard">
         <img class=" circular ui image" src="images/logo.jpg" alt="logo" style="width: 40px; height: 40px;">
     </a>
-    <a class=" purple item" href="#dashboard" title="Dashboard" data-bind="css: { active: route().page === 'dashboard' }">
+    <a class="red item" href="#dashboard" title="Dashboard" data-bind="css: { active: route().page === 'dashboard' }">
         <i class="icon dashboard"></i>
         Dashboard
     </a>
-    <a class="blue item" href="#reports" title="Reports" data-bind="css: { active: route().page === 'reports' }">
+    <a class="teal item" href="#reports" title="Reports" data-bind="css: { active: route().page === 'reports' }">
         <i class="icon ticket"></i>
         Reports
     </a>
-    <a class="red item" href="#users" title="Users" data-bind="css: { active: route().page === 'users' }">
+    <a class="purple item" href="#users" title="Users" data-bind="css: { active: route().page === 'users' }">
         <i class="icon users"></i>
         Users
     </a>
@@ -23,7 +23,7 @@
     </a>
     <div class="right menu" style="padding-top: 15px;">
         <div class="ui dropdown item" id="userActions">
-            FullName <i class="dropdown icon"></i>
+            <label data-bind="text: FullName">FullffName</label> <i class="dropdown icon"></i>
             <div class="menu">
                 <a class="item" href="#changepassword" title="Manage Profile">
                     <i class="icon write square"></i>
@@ -38,7 +38,7 @@
     </div>
 
 </div>
-<div class="ui inverted large menu" id="ResponsiveMenu">
+<div class="ui inverted large menu" id="ResponsiveMenu" data-bind="visible: loggedIn">
     <a class="item" href="#dashboard">
         SemApp
     </a>

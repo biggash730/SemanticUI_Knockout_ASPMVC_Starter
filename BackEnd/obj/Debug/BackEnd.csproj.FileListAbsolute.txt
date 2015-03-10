@@ -65,3 +65,6 @@ C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\obj\Debug\BackEn
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\System.Web.Cors.dll
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\System.Web.Http.Cors.dll
 C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\bin\System.Web.Http.Cors.xml
+C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\obj\Debug\BackEnd.Migrations.InitialCreate.resources
+C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\obj\Debug\BackEnd.csproj.GenerateResource.Cache
+C:\Users\Francis\Dropbox\Projects\Sem_Knock_Starter_App\BackEnd\obj\Debug\BackEnd.Migrations.Addedthecountriesmodel.resources

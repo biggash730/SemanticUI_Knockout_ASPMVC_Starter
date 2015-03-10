@@ -11,8 +11,8 @@ namespace BackEnd.Models
             Configuration.ProxyCreationEnabled = false;
         }
 
-        /*public DbSet<Country> Countries { get; set; }
-        public DbSet<Currency> Currencies { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        /*public DbSet<Currency> Currencies { get; set; }
         public DbSet<TransferFee> TransferFees { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<City> Cities { get; set; }
@@ -25,7 +25,7 @@ namespace BackEnd.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Configuration.LazyLoadingEnabled = true;
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Migrations.Configuration>());
             base.OnModelCreating(modelBuilder);
         }
     }

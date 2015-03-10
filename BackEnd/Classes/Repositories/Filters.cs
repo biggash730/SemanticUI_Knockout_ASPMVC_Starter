@@ -44,7 +44,6 @@ namespace BackEnd.Classes.Repositories
         public long Id;
         public string Name;
         public string ShortCode;
-        public long CurrencyId;
 
         public IQueryable<Country> BuildQuery(IQueryable<Country> query)
         {
@@ -52,8 +51,17 @@ namespace BackEnd.Classes.Repositories
             if (Id>0) query = query.Where(q => q.Id == Id);
             if (!string.IsNullOrWhiteSpace(Name)) query = query.Where(q => q.Name.Contains(Name));
             if (!string.IsNullOrWhiteSpace(ShortCode)) query = query.Where(q => q.ShortCode.Contains(ShortCode));
-            if (CurrencyId > 0) query = query.Where(q => q.CurrencyId == CurrencyId);
             query = query.Where(q => q.IsActive && !q.IsDeleted);
+            if (Pager.Size > 0) query = query.OrderBy(x => x.Updated).Skip(Pager.Skip()).Take(Pager.Size);
+            return query;
+        }
+
+        public IQueryable<Country> ReportBuildQuery(IQueryable<Country> query)
+        {
+            query = query.Where(q => q.IsActive && !q.IsDeleted);
+            if (!string.IsNullOrWhiteSpace(Name)) query = query.Where(q => q.Name.Contains(Name));
+            if (!string.IsNullOrWhiteSpace(ShortCode)) query = query.Where(q => q.ShortCode.Contains(ShortCode));
+
             if (Pager.Size > 0) query = query.OrderBy(x => x.Updated).Skip(Pager.Skip()).Take(Pager.Size);
             return query;
         }

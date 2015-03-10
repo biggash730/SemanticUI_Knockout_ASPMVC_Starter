@@ -1,3 +1,18 @@
-<h2>reports</h2>
-
-<p data-bind='text: message'></p>
+<div class="ui grid" id="ReportsPage">
+    <div class="sixteen wide column">
+        <div class="ui raised teal segment">
+            <div class="ui top left teal label">
+                All Reports
+            </div>
+            <div id="reportDropdown" class="ui right floated blue labeled icon top left pointing dropdown button">
+                <i class="tasks icon"></i>
+                <span class="text">Reports</span>
+                <div class="menu">
+                    <div class="item">Countries</div>
+                </div>
+            </div>
+            <div class="ui divider"></div>
+            <div id="ReportsContainer" data-bind='component: componentName'></div>
+        </div>
+    </div>
+</div>

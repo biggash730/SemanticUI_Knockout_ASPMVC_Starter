@@ -8,9 +8,6 @@ namespace BackEnd.Models
     {
         [Required, MaxLength(128)]
         public string ShortCode { get; set; }
-        [Required]
-        public long CurrencyId { get; set; }
-        public virtual Currency Currency { get; set; }
     }
     public class City : LookUp
     {

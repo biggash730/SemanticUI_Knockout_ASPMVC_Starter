@@ -67,7 +67,7 @@ namespace BackEnd.Classes.Repositories
                         IsActive = myUser.IsActive,
                         Updated = myUser.Updated,
                         Roles = roles.First(x => x.Key == myUser.Roles.First().RoleId).Value.Name
-                    }).Where(x => !x.Roles.Contains("Administrator")).ToList();
+                    }).ToList();
 
                     return users.Any() ? DataHelpers.ReturnJsonData(users, true, "Loaded successfully", users.Count()) : DataHelpers.ReturnJsonData(users, false, "No Data Found", 0);
                 }

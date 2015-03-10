@@ -1,9 +1,10 @@
 define(['jquery', 'knockout', 'text!./dashboard.html'], function($, ko, templateMarkup) {
-
     function dashboard(params) {
 
-        if (localStorage.token === "") {
-            
+        if (localStorage.koToken === "") {
+            var nl = window.location.href.replace(window.location.hash, '#login');
+            window.location.href = nl;
+            //window.location.reload();
         }
 
         var self = this;

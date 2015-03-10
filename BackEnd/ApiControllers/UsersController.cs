@@ -16,9 +16,8 @@ namespace BackEnd.ApiControllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
-        [HttpPost]
+        [HttpGet]
         [Route("users/get")]
-        [Route("users/users/get")]
         public JsonData Get()
         {
             return new UserRepo().Get(User.Identity.GetUserId());
@@ -26,7 +25,6 @@ namespace BackEnd.ApiControllers
 
         [HttpPost]
         [Route("Users/getall")]
-        [Route("users/users/getall")]
         public JsonData GetUsers(int page, int size)
         {
             var filter = new UserFilter { Pager = { Page = page, Size = size } };
@@ -35,7 +33,6 @@ namespace BackEnd.ApiControllers
 
         [HttpPost]
         [Route("Users/Update")]
-        [Route("users/users/update")]
         public JsonData Update(UserViewModel data)
         {
             return new UserRepo().Update(data, User.Identity.GetUserId());

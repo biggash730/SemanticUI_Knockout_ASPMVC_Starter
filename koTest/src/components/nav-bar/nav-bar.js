@@ -2,9 +2,16 @@ define(['knockout', 'text!./nav-bar.html', 'jquery'], function (ko, template, $)
     
     function navBarViewModel(params) {
         var self = this;
+        self.User = ko.observable();
+        self.FullName = ko.observable();
+        self.loggedIn = ko.observable(false);
+        if (localStorage.koToken !== "")
+            self.loggedIn(true);
+
+        //alert(self.loggedIn());
         $.ajaxSetup({
             beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+                xhr.setRequestHeader('Authorization', localStorage.getItem('koToken'));
             }
         });
         $("#userActions").dropdown();
@@ -16,9 +23,21 @@ define(['knockout', 'text!./nav-bar.html', 'jquery'], function (ko, template, $)
 
         self.route = params.route;
         self.logout = function () {
-            console.log("logout clicked");
-            localStorage.token = "";
+            localStorage.koToken = "";
+            var newloc = window.location.href.replace(window.location.hash, '#login');
+            window.location.href = newloc;
+            window.location.reload();
         };
+
+        self.getUser = function () {
+            $.getJSON(serverAddress + 'users/get', function (rData) {
+                if (rData.Success) {
+                    self.User(rData.Data);
+                    self.FullName(rData.Data.FullName);
+                }
+            });
+        };
+        self.getUser();
     }
 
     return { viewModel: navBarViewModel, template: template };

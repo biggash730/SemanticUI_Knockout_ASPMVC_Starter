@@ -14,7 +14,8 @@ var require = {
         "semantic": "js/lib/semantic.min",
         "accounting": "js/lib/accounting.min",
         "moment": "js/lib/moment.min",
-        "router": "js/app/router"
+        "router": "js/app/router",
+        "toastr": "js/lib/toastr.min"
     },
     shim: {
         "semantic": { deps: ["jquery"] },

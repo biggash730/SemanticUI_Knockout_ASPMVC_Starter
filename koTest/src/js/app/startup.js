@@ -8,6 +8,8 @@ define(["jquery", "knockout", "router", "semantic", "knockout-projections"], fun
     ko.components.register('login', { require: 'components/login/login' });
     ko.components.register('reset', { require: 'components/reset/reset' });
     ko.components.register('change-password', { require: 'components/change-password/change-password' });
+    ko.components.register('countries', { require: 'components/countries/countries' });
+    ko.components.register('report-countries', { require: 'components/report-countries/report-countries' });
 
     // ... or for template-only components, you can just point to a .html file directly:
     ko.components.register('about-page', {
@@ -21,7 +23,7 @@ define(["jquery", "knockout", "router", "semantic", "knockout-projections"], fun
 });
 
 function ClearToken() {
-    localStorage.token = "";
+    localStorage.koToken = "";
 }
 
 var Pager = function (page) {

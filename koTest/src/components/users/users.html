@@ -1,13 +1,8 @@
 <div id="UsersPage">
     <div class="ui raised purple segment">
-        <div class="ui ribbon purple huge label">
+        <div class="ui top left attached purple label">
+            <i class="users icon"></i>
             Manage Users
-        </div>
-        <div class="ui right floated animated fade positive button" data-bind="click: showAdd">
-            <div class="visible content">Add User</div>
-            <div class="hidden content">
-                <i class="add sign icon"></i>
-            </div>
         </div>
         <div class="ui horizontal icon divider">
             <i class="circular users icon"></i>
@@ -109,10 +104,9 @@
             <div class="left floated three wide column"></div>
             <div class="left floated ten wide column">
                 <div class="ui form raised orange segment" id="ViewUserForm">
-                    <h4 class="ui huge header center aligned">
-                        <i class="home icon"></i>
-                        User Details
-                    </h4>
+                    <h5 class="ui huge header center aligned">
+                        View User Details
+                    </h5>
                     <div class="ui horizontal icon divider">
                         <i class="circular user icon"></i>
                     </div>
@@ -196,6 +190,12 @@
             </div>
             <div class="right floated three wide column"></div>
         </div>
+        <div class="ui right floated animated fade positive button" data-bind="click: showAdd">
+            <div class="visible content">Add User</div>
+            <div class="hidden content">
+                <i class="add sign icon"></i>
+            </div>
+        </div>
         <div class="right floated ui pagination menu">
             <a class="icon item" data-bind="click: prevPage">
                 <i class="left arrow icon"></i>
@@ -215,7 +215,6 @@
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Role</th>
-                    <th>Branch</th>
                     <th></th>
                 </tr>
             </thead>
@@ -227,7 +226,6 @@
                     <td data-bind="text: $data.Email"></td>
                     <td data-bind="text: $data.PhoneNumber"></td>
                     <td data-bind="text: $data.Roles"></td>
-                    <td data-bind="text: $data.Branch.Name"></td>
                     <td>
                         <div class="ui buttons right floated">
                             <div class="ui animated fade purple button" data-bind="click: $parent.showView.bind($root)">

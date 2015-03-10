@@ -7,14 +7,13 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BackEnd.ApiControllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors("*", "*", "*")]
     public class SettingsController : ApiController
     {
         
 
-        /*#region Country Controller
+        #region Country Controller
         [HttpPost]
-        [Route("home/countries/getall")]
         [Route("countries/getall")]
         public JsonData Get(CountryFilter filter)
         {
@@ -49,7 +48,7 @@ namespace BackEnd.ApiControllers
             return new CountryRepo().Delete(id, User.Identity.GetUserId());
         }
         #endregion
-
+        /*
         #region City Controller
         [HttpPost]
         [Route("home/cities/getall")]
